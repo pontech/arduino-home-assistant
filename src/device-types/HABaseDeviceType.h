@@ -79,6 +79,13 @@ public:
         { return _name; }
 
     /**
+     * Returns pointer to the user data sturt/class.
+     * It can be nullptr if there is no name assigned.
+     */
+    inline const void* getData() const
+        { return _data; }
+
+    /**
      * Sets availability of the device type.
      * Setting the initial availability enables availability reporting for this device type.
      * Please note that not all device types support this feature.
@@ -209,7 +216,7 @@ protected:
     /// The name that was set using setName method. It can be nullptr.
     const char* _name;
 
-    /// The name that was set using setName method. It can be nullptr.
+    /// Pointer to a struct or class that can be used by the user.
     const void* _data;
 
     /// HASerializer that belongs to this device type. It can be nullptr.

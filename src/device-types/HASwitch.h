@@ -21,6 +21,7 @@ public:
      * @param uniqueId The unique ID of the sensor. It needs to be unique in a scope of your device.
      */
     HASwitch(const char* uniqueId);
+    HASwitch(const char* uniqueId, void* data);
 
     /**
      * Changes state of the switch and publishes MQTT message.

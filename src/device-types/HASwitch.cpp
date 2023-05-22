@@ -11,10 +11,21 @@ HASwitch::HASwitch(const char* uniqueId) :
     _retain(false),
     _optimistic(false),
     _currentState(false),
-    _commandCallback(nullptr),
-    _data(nullptr)
+    _commandCallback(nullptr)
 {
 
+}
+
+HASwitch::HASwitch(const char* uniqueId, void* data) :
+    HABaseDeviceType(AHATOFSTR(HAComponentSwitch), uniqueId),
+    _class(nullptr),
+    _icon(nullptr),
+    _retain(false),
+    _optimistic(false),
+    _currentState(false),
+    _commandCallback(nullptr)
+{
+    this->_data = data;
 }
 
 bool HASwitch::setState(const bool state, const bool force)
