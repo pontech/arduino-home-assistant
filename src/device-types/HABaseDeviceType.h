@@ -209,6 +209,9 @@ protected:
     /// The name that was set using setName method. It can be nullptr.
     const char* _name;
 
+    /// The name that was set using setName method. It can be nullptr.
+    const void* _data;
+
     /// HASerializer that belongs to this device type. It can be nullptr.
     HASerializer* _serializer;
 

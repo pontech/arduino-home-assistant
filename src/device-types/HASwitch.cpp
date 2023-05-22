@@ -11,7 +11,8 @@ HASwitch::HASwitch(const char* uniqueId) :
     _retain(false),
     _optimistic(false),
     _currentState(false),
-    _commandCallback(nullptr)
+    _commandCallback(nullptr),
+    _data(nullptr)
 {
 
 }
