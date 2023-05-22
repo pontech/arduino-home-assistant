@@ -55,7 +55,7 @@ public:
     explicit HAMqtt(
         Client& netClient,
         HADevice& device,
-        const uint8_t maxDevicesTypesNb = 6
+        const uint8_t maxDevicesTypesNb = 12
     );
 #endif
 
