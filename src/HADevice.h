@@ -84,6 +84,15 @@ public:
     bool setUniqueId(const byte* uniqueId, const uint16_t length);
 
     /**
+     * Sets unique ID of the device based on the given byte array.
+     * Each byte is converted into a hex string representation, so the final length of the unique ID will be twice as given.
+     *
+     * @param uniqueId null terminated char array that's going to be converted into the string.
+     * @note The unique ID can be set only once (via constructor or using this method).
+     */
+    bool setUniqueId(const char* uniqueId);
+
+    /**
      * Sets the "manufacturer" property that's going to be displayed in the Home Assistant.
      *
      * @param manufacturer Any string. Keep it short to save the memory.
