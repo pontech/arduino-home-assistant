@@ -22,6 +22,24 @@ HANumber::HANumber(const char* uniqueId, const NumberPrecision precision) :
 
 }
 
+HANumber::HANumber(const NumberPrecision precision) :
+    HABaseDeviceType(AHATOFSTR(HAComponentNumber)),
+    _precision(precision),
+    _class(nullptr),
+    _icon(nullptr),
+    _retain(false),
+    _optimistic(false),
+    _mode(ModeAuto),
+    _unitOfMeasurement(nullptr),
+    _minValue(),
+    _maxValue(),
+    _step(),
+    _currentState(),
+    _commandCallback(nullptr)
+{
+
+}
+
 bool HANumber::setState(const HANumeric& state, const bool force)
 {
     if (!force && state == _currentState) {

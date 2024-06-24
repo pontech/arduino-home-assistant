@@ -44,6 +44,7 @@ public:
      * @param precision Precision of the floating point number that will be displayed in the HA panel.
      */
     HANumber(const char* uniqueId, const NumberPrecision precision = PrecisionP0);
+    HANumber(const NumberPrecision precision = PrecisionP0);
 
     /**
      * Changes state of the number and publishes MQTT message.

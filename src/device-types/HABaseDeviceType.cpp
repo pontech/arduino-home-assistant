@@ -39,6 +39,44 @@ HABaseDeviceType::HABaseDeviceType(
     }
 }
 
+HABaseDeviceType::HABaseDeviceType(
+    const __FlashStringHelper *componentName) : _componentName(componentName),
+                                                _uniqueId(nullptr), // initialize to nullptr
+                                                _name(nullptr),
+                                                _serializer(nullptr),
+                                                _availability(AvailabilityDefault)
+{
+}
+
+void HABaseDeviceType::HABaseSetUniqueId(const char *uniqueIdSuffix)
+{
+    HADevice const *device = HAMqtt::instance()->getDevice();
+    if (device)
+    {
+        const char *mainUniqueId = device->getUniqueId();
+        if (mainUniqueId && uniqueIdSuffix)
+        {
+            size_t totalLength = strlen(mainUniqueId) + strlen(uniqueIdSuffix) + 2;
+            char *concatenatedId = new char[totalLength];
+            snprintf(concatenatedId, totalLength, "%s_%s", mainUniqueId, uniqueIdSuffix);
+            _uniqueId = concatenatedId;
+        }
+        else
+        {
+            _uniqueId = uniqueIdSuffix;
+        }
+    }
+    else
+    {
+        _uniqueId = uniqueIdSuffix;
+    }
+
+    if (mqtt())
+    {
+        mqtt()->addDeviceType(this);
+    }
+}
+
 void HABaseDeviceType::setAvailability(bool online)
 {
     _availability = (online ? AvailabilityOnline : AvailabilityOffline);

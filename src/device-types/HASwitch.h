@@ -22,6 +22,7 @@ public:
      */
     HASwitch(const char* uniqueId);
     HASwitch(const char* uniqueId, void* data);
+    HASwitch(void* data);
 
     /**
      * Changes state of the switch and publishes MQTT message.

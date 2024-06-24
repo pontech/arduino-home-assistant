@@ -37,6 +37,10 @@ public:
         const char* uniqueId
     );
 
+    HABaseDeviceType(const __FlashStringHelper* componentName);
+
+    void HABaseSetUniqueId(const char *uniqueIdSuffix);
+
     /**
      * Returns unique ID of the device type.
      */
